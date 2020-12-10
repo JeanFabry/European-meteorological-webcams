@@ -8,3 +8,8 @@ section{
     flex-wrap: wrap;
     width: 100vw;
 }
+
+.webcamDiv{
+width:800px;
+height: 500px;
+}
