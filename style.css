@@ -1,0 +1,10 @@
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
+section{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100vw;
+}

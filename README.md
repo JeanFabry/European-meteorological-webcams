@@ -1,0 +1,1 @@
+Page which gather several webcams in order to check the weather in different places in Europe.
