@@ -5,7 +5,7 @@ let webcams = [
       {
         subPlace: "Les Contamines-Montjoie - Montagnes",
         link:
-          '<script async type="text/javascript" src="https://webcams.windy.com/webcams/public/embed/script/player.js"></script>',
+          'https://webcams.windy.com/webcams/public/embed/script/player.js',
       },
       {
         subPlace: "Evasion - Mont-Banc",
@@ -15,7 +15,7 @@ let webcams = [
       {
         subPlace: "Saint-Gervais-les-Bains: Mont Blanc",
         link:
-          '<a name="windy-webcam-timelapse-player" data-id="1462285137" data-play="day" href="https://windy.com/webcams/1462285137" target="_blank">Saint-Gervais-les-Bains: Mont Blanc</a><script async type="text/javascript" src="https://webcams.windy.com/webcams/public/embed/script/player.js"></script>',
+          'https://webcams.windy.com/webcams/public/embed/script/player.js',
       },
       {
         subPlace: "Saint-Gervais - Mont Joux",

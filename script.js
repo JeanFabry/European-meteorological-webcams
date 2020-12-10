@@ -1,4 +1,6 @@
 let section =document.querySelector('.columns');
+let scripts = section.children;
+console.log('scripts:', scripts[0])
 
 const displayWebcam =()=>{
 
@@ -19,8 +21,9 @@ for (let mainplace of webcams){
     
 const webcamDiv = document.createElement("div");
 webcamDiv.classList.add("webcamDiv")
-console.log(mainplace.subPlaces[0].link);
-webcamDiv.innerHTML=mainplace.subPlaces[0].link
+const script = document.createElement("script");
+script.src=mainplace.subPlaces[0].link
+webcamDiv.appendChild(script);
 
     webcamsDiv.appendChild(webcamsDivTitle);
     webcamsDiv.appendChild(webcamSelect);
