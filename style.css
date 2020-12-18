@@ -1,15 +1,28 @@
-body {
+/* body {
     width: 100vw;
     height: 100vh;
 }
+
+*/
 
 section{
     display: flex;
     flex-wrap: wrap;
     width: 100vw;
+    height: 100vh;
 }
-
+/*
 .webcamDiv{
 width:800px;
 height: 500px;
+}
+
+a {
+    height: 10vh;
+    width: 10vw;
+} */
+
+.webcamsStyle {
+    width:250;
+    height:200;
 }
