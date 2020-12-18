@@ -1,4 +1,58 @@
-let section = document.querySelector('.columns');
+let section = document.querySelector('.column');
+let input = document.querySelector('input');
+let latitude;
+let longitude;
+
+fetch("./assets/cities5000.json")
+  .then((response) => response.json())
+    .then((array) => {
+      
+        input.addEventListener("keyup", function () {
+              console.log(
+                "input.value.toLowerCase():",
+                input.value
+              );
+          for (let elements of array) {
+            if (input.value == elements.city) {
+            section.innerHTML="";
+              latitude = elements.Latitude;
+              longitude = elements.Longitude;
+              console.log("latitude:", latitude);
+              console.log("longitude:", longitude);
+              getWebcams(latitude,longitude)
+            
+            }
+          }
+        });
+    }
+    )
+
+
+    const getWebcams = (x,y) => {
+fetch(
+        //"https://api.windy.com/api/webcams/v2/list/country=FR/category=beach/orderby=popularity/limit=8?show=webcams:player&key=yQOnE7r9ViOUBnz4gaHzWOZmK751RHSm"
+        "https://api.windy.com/api/webcams/v2/list/nearby="+x+","+y+",10/?show=webcams:player&key=yQOnE7r9ViOUBnz4gaHzWOZmK751RHSm"
+    )
+    .then((response) => response.json())
+    .then((mainObject) => {
+        console.log(mainObject);
+        console.log(mainObject.result.webcams);
+        for (let webcamsObj of mainObject.result.webcams) {
+            let webcamEmbed = document.createElement("embed");
+            webcamEmbed.type = "video/webm";
+            webcamEmbed.classList.add("webcamsStyle")
+            if (webcamsObj.player.live.available) {
+                webcamEmbed.src = webcamsObj.player.live.embed
+            } else {
+                webcamEmbed.src = webcamsObj.player.day.embed
+            }
+            section.appendChild(webcamEmbed);
+            
+        }
+        console.log(mainObject.result.webcams[0].player);
+
+    });
+    }
 // let scripts = section.children;
 // console.log('scripts:', scripts[2])
 
@@ -39,31 +93,3 @@ let section = document.querySelector('.columns');
 
 // }
 
-fetch(
-        //"https://api.windy.com/api/webcams/v2/list/country=FR/category=beach/orderby=popularity/limit=8?show=webcams:player&key=yQOnE7r9ViOUBnz4gaHzWOZmK751RHSm"
-        "https://api.windy.com/api/webcams/v2/list/nearby=45.814568245813724,6.722398313598164,10/?show=webcams:player&key=yQOnE7r9ViOUBnz4gaHzWOZmK751RHSm"
-    )
-    .then((response) => response.json())
-    .then((mainObject) => {
-        console.log(mainObject);
-        console.log(mainObject.result.webcams);
-        for (let webcamsObj of mainObject.result.webcams) {
-            let webcamEmbed = document.createElement("embed");
-            webcamEmbed.type = "video/webm";
-            webcamEmbed.classList.add("webcamsStyle")
-            if (webcamsObj.player.live.available) {
-                webcamEmbed.src = webcamsObj.player.live.embed
-            } else {
-                webcamEmbed.src = webcamsObj.player.day.embed
-            }
-            section.appendChild(webcamEmbed);
-            console.log('webcamEmbed:', webcamEmbed)
-            
-        }
-        console.log(mainObject.result.webcams[0].player);
-
-
-        /* <embed src="https://webcams.windy.com/webcams/public/embed/player/1301219390/day" type="video/webm"  width="250"
-               height="200"></embed> */
-
-    });
