@@ -1,16 +1,68 @@
-/* body {
+body {
     width: 100vw;
-    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-*/
+
+.heading {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+h1{
+    font-size: 50px;
+}
+
+.webcamDiv{
+display: flex;
+flex-direction: column;
+justify-content: center;align-items: center;
+}
+
+.webcamTitle{
+    font-size: 12px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    flex-wrap: wrap;
+}
 
 section{
-    display: flex;
-    flex-wrap: wrap;
-    width: 100vw;
-    height: 100vh;
+    display: flex; 
+ }
+
+select {
+    margin-left: 50px;
+    height: 40px;
+    width: 268px;
+    padding: 5px;
+    font-size: 16px;
+    line-height: 1;
+    border: 0;
+    border-radius: 5px;
+    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right rgb(255, 255, 255);
+    -webkit-appearance: none;
+    border: 1px solid lightgray;
+    background-position-x: 244px;
 }
+
+.center {
+    display: flex;
+    justify-content: center;
+     flex-wrap: wrap;
+    width: 100vw;
+    margin: 20px 0px;
+}
+
+input {
+    height: 30px;
+}
+
 /*
 .webcamDiv{
 width:800px;
@@ -22,7 +74,23 @@ a {
     width: 10vw;
 } */
 
-.webcamsStyle {
-    width:250;
-    height:200;
+embed {
+    margin:10px 10px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px;
+}
+
+.heading .headButton {
+    color: black;
+   margin-left: 50px;
+   transition: ease-in-out 0.5s;
+}
+
+.heading .headerButton {
+    color: black;
+   transition: ease-in-out 0.5s;
+}
+
+.heading .headButton:hover {
+  background-color: rgb(238, 238, 238);
 }

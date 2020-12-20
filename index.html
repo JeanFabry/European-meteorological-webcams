@@ -4,19 +4,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"/>
+    <title>Weather webcams</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
     <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-    <input type="text"></input>
-   <section class="columns"> 
-        <div class="column">
+    <h1>Weather webcams</h1>
+    <div class="heading">
+        <div class="field has-addons">
+            <div class="control">
+                <input class="input" type="text" placeholder="Find a repository">
+            </div>
+            <div class="control">
+                <a class="button is-info">
+                    Search
+                </a>
+            </div>
         </div>
-   </section>   
-    <script src="./data.js"></script>
-    <script src="./script.js"></script>
+
+        <select name="limit" id="limit" class="limit">
+            <option>Number of webcams displayed</option>
+        </select>
+        <a class="button headButton" href="./customized.html">Create a customized layout</a>
+ </div>
+        <div class="informations"></div>
+   
+        <section class="columns">
+            <div class="column center">
+            </div>
+        </section>
+
+        <script src="./script.js"></script>
 </body>
 
 </html>
