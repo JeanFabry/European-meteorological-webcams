@@ -9,6 +9,7 @@ body {
 
 .heading {
     display: flex;
+    flex-wrap: wrap;
     width: 100%;
     justify-content: center;
     margin-top: 20px;
@@ -16,6 +17,7 @@ body {
 
 h1{
     font-size: 50px;
+    text-align: center;
 }
 
 .webcamDiv{
@@ -94,3 +96,27 @@ embed {
 .heading .headButton:hover {
   background-color: rgb(238, 238, 238);
 }
+
+ @media only screen and (max-width: 640px) {
+.heading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.limit {
+    margin: 10px 0px;
+}
+
+a.button:nth-child(3){
+     margin: 10px 0px;
+}
+
+.informations {
+    margin-top: 15px;
+    border: 1px dashed black;
+}
+
+ }
+
