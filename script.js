@@ -67,7 +67,7 @@ const eventToGenerate = (array, e) => {
       } else if (input.value == "") {
         section.innerHTML = "";
         informations.textContent =
-          "You did not write anything in the search bar. Please write something to find available webcams";
+          "You did not write anything in the search bar. Please write something to find available webcams.";
 
       } else {
         section.innerHTML = "";

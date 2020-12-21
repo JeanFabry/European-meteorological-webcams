@@ -1,3 +1,5 @@
+/* All */
+
 body {
     width: 100vw;
     display: flex;
@@ -6,6 +8,12 @@ body {
     align-items: center;
 }
 
+h1{
+    font-size: 50px;
+    text-align: center;
+}
+
+/* Sections */
 
 .heading {
     display: flex;
@@ -15,30 +23,7 @@ body {
     margin-top: 20px;
 }
 
-h1{
-    font-size: 50px;
-    text-align: center;
-}
-
-.webcamDiv{
-display: flex;
-flex-direction: column;
-justify-content: center;align-items: center;
-}
-
-.webcamTitle{
-    font-size: 12px;
-    margin-top: -10px;
-    margin-bottom: 10px;
-    overflow: hidden;
-    flex-wrap: wrap;
-}
-
-section{
-    display: flex; 
- }
-
-select {
+.heading select {
     margin-left: 50px;
     height: 40px;
     width: 268px;
@@ -53,35 +38,6 @@ select {
     background-position-x: 244px;
 }
 
-.center {
-    display: flex;
-    justify-content: center;
-     flex-wrap: wrap;
-    width: 100vw;
-    margin: 20px 0px;
-}
-
-input {
-    height: 30px;
-}
-
-/*
-.webcamDiv{
-width:800px;
-height: 500px;
-}
-
-a {
-    height: 10vh;
-    width: 10vw;
-} */
-
-embed {
-    margin:10px 10px;
-    border-radius: 10px;
-    box-shadow: 5px 5px 10px;
-}
-
 .heading .headButton {
     color: black;
    margin-left: 50px;
@@ -93,16 +49,112 @@ embed {
    transition: ease-in-out 0.5s;
 }
 
-.heading .headButton:hover {
+.headerButton{
+    margin-bottom: 20px;
+}
+
+
+.heading .headerButton:hover,.heading .headButton:hover  {
   background-color: rgb(238, 238, 238);
 }
 
+.numberWebcams{
+    display: flex;
+    flex-wrap: wrap;
+    height:40px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    border: 0.5px solid lightgray;
+    border-radius: 5px;
+}
+
+.columns{
+    display: flex;
+    justify-content: center;
+    margin: 0 20px;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+     flex-wrap: wrap;
+    width: 100vw;
+    /* margin-top: 20px; */
+}
+
+.warping {
+    min-width: 320px;
+}
+
+.webcamsection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.webcamTitle{
+    font-size: 12px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    height: 15px;
+    overflow: hidden;
+    flex-wrap: wrap;
+    max-width: 300px;
+    text-align: center;
+}
+
+
+
+.heightSearch {
+    height: 32px;
+}
+
+.webcamDiv{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+.webcamDiv select {
+    border-radius: 5px;
+    max-width: 300px;
+}
+
+embed {
+    margin:10px 10px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px;
+}
+
+
+.add {
+    border-radius: 50%;
+    height: 75px;
+    width: 75px;
+    margin-bottom: 20px;
+    background-color: transparent;
+    border: 0.5px solid black;
+}
+
+/* Media queries */ 
+
  @media only screen and (max-width: 640px) {
-.heading {
+
+.columns {
+    display: flex;
+flex-direction: column;
+    }
+
+    .heading {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.heading select {
+    margin-left: 0;
 }
 
 .limit {
