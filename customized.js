@@ -1,65 +1,19 @@
 
+//--------------------- General variables ---------------
 let section = document.querySelector(".columns");
 let numberOfDivs = 8;
-// console.log('section:', section)
-// console.log('sectionCpouc:', section[0])
-// let sectionChild = section.firstElementChild;
-// console.log('sectionChild:', sectionChild)
-
-// let input = document.querySelector("input");
-// let searchButton = document.querySelector("a.is-info");
 let limit = 20;
 let latitude = 45.795429157006346;
 let longitude = 6.715087202217397;
 let numberWebcams = document.querySelector(".numberWebcams");
 let addButton = document.querySelector(".add");
+let removeButton = document.querySelector(".remove");
 
 
 
-numberWebcams.addEventListener("keyup", function (e) {
-  if (e.code == "Enter" || e.code == "Go") {
-    section.innerHTML="";
-    numberOfDivs = numberWebcams.value;
-    createCustomizedSection(numberOfDivs);
-  };
-});
+// ------------------ Main functions & algorithms -------
 
-
-addButton.addEventListener("click", function (e) {
-    createCustomizedSection(1);
-});
-
-// .webcam1 > div:nth-child(1) > div:nth-child(2) > a:nth-child(1)
-
-
-//http://127.0.0.1:5500/index.html
-//"https://api.windy.com/api/webcams/v2/list/country=FR/category=beach/orderby=popularity/limit=8?show=webcams:player&key=yQOnE7r9ViOUBnz4gaHzWOZmK751RHSm"
-
-
-const eventToGenerate = (array, e, input,webcamDiv) => {
-  if (e.type == "click" || e.code == "Enter" || e.code == "Go") {
-    let inputSplitted = new RegExp(
-      "^" + input.value.substring(0, 3),
-      "gi"
-    );
-    console.log("inputSplitted:", inputSplitted);
-
-    for (let elements of array) {
-      let pattern = new RegExp("^" + elements.city + "$", "gi");
-      if (input.value.match(pattern)) {
-        latitude = elements.Latitude;
-        longitude = elements.Longitude;
-        getWebcams(elements.city, latitude, longitude, webcamDiv);
-      } else if (input.value == "") {
-        webcamDiv.textContent =
-          "You did not write anything in the search bar. Please write something to find available webcams.";
-      } else {
-        webcamDiv.textContent =
-          input.value + " does not exist. Please check your spelling. ";
-      }
-    }
-  }
-};
+   //--- adding of an amount of Webcam sections dynamically--
 
 const createCustomizedSection = (numberOfDivs) => {
   for (let i = 0; i < numberOfDivs; i++) {
@@ -122,16 +76,33 @@ const createCustomizedSection = (numberOfDivs) => {
   }
 };
 
+ // -------------- Using the searching bar -----------
+const eventToGenerate = (array, e, input, webcamDiv) => {
+  if (e.type == "click" || e.code == "Enter" || e.code == "Go") {
+      for (let elements of array) {
+      let pattern = new RegExp("^" + elements.city + "$", "gi");
+      if (input.value.match(pattern)) {
+        latitude = elements.Latitude;
+        longitude = elements.Longitude;
+        getWebcams(elements.city, latitude, longitude, webcamDiv);
+      } else if (input.value == "") {
+        webcamDiv.textContent =
+          "You did not write anything in the search bar. Please write something to find available webcams.";
+      } else {
+        webcamDiv.textContent =
+          input.value + " does not exist. Please check your spelling. ";
+      }
+    }
+  }
+};
 
-
+// ------ fetching and incorporating the player from API-----
 const getWebcams = (city, x, y, webcamDiv) => {
   fetch(
     `https://api.windy.com/api/webcams/v2/list/orderby=popularity/nearby=${x},${y},10/limit=${limit}?show=webcams:player&key=yQOnE7r9ViOUBnz4gaHzWOZmK751RHSm`
   )
     .then((response) => response.json())
     .then((mainObject) => {
-      console.log(mainObject);
-      console.log(mainObject.result.webcams);
       webcamDiv.innerHTML = "";
 
       let webcamTitle = document.createElement("h5");
@@ -173,15 +144,13 @@ const getWebcams = (city, x, y, webcamDiv) => {
       webcamDiv.appendChild(selectAWebcam);
       webcamDiv.appendChild(webcamEmbed);
       webcamDiv.appendChild(webcamTitle);
-
-      console.log(mainObject.result.webcams[0].player);
     })
     .catch((error) => {
       console.log("There was an error!", error);
     });
 };
 
-//-------------------- STARTING OF ------------------------------
+//------------------ Onload page with default webcams------------------------------
 
 for (let i = 0; i < numberOfDivs; i++) {
   let addColumnDiv = document.createElement("div");
@@ -221,8 +190,6 @@ for (let i = 0; i < numberOfDivs; i++) {
   )
     .then((response) => response.json())
     .then((mainObject) => {
-      console.log(mainObject);
-      console.log(mainObject.result.webcams);
       let webcamTitle = document.createElement("h5");
       webcamTitle.classList.add("webcamTitle");
       webcamTitle.textContent = mainObject.result.webcams[i].title;
@@ -262,8 +229,6 @@ for (let i = 0; i < numberOfDivs; i++) {
       webcamDiv.appendChild(selectAWebcam);
       webcamDiv.appendChild(webcamEmbed);
       webcamDiv.appendChild(webcamTitle);
-
-      console.log(mainObject.result.webcams[0].player);
     })
     .catch((error) => {
       console.log("There was an error!", error);
@@ -276,7 +241,6 @@ for (let i = 0; i < numberOfDivs; i++) {
   webcamsection.appendChild(fieldDiv);
   webcamsection.appendChild(webcamDiv);
   addColumnDiv.appendChild(webcamsection);
-
   section.appendChild(addColumnDiv);
 
   fetch("./assets/cities5000.json")
@@ -294,3 +258,21 @@ for (let i = 0; i < numberOfDivs; i++) {
     });
 }
 
+// ------- Bottom section - button ------------------
+numberWebcams.addEventListener("keyup", function (e) {
+  if (e.code == "Enter" || e.code == "Go") {
+    section.innerHTML = "";
+    numberOfDivs = numberWebcams.value;
+    createCustomizedSection(numberOfDivs);
+  }
+});
+
+addButton.addEventListener("click", function (e) {
+  createCustomizedSection(1);
+});
+
+
+removeButton.addEventListener("click", function (e) {
+  let sectionLastChild = section.lastElementChild;
+  section.removeChild(sectionLastChild);
+});

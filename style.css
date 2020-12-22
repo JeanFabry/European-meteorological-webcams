@@ -13,7 +13,7 @@ h1{
     text-align: center;
 }
 
-/* Sections */
+/* Section - heading */
 
 .heading {
     display: flex;
@@ -58,15 +58,7 @@ h1{
   background-color: rgb(238, 238, 238);
 }
 
-.numberWebcams{
-    display: flex;
-    flex-wrap: wrap;
-    height:40px;
-    margin-left: 20px;
-    margin-bottom: 20px;
-    border: 0.5px solid lightgray;
-    border-radius: 5px;
-}
+/* Main section - columns */
 
 .columns{
     display: flex;
@@ -79,7 +71,6 @@ h1{
     justify-content: center;
      flex-wrap: wrap;
     width: 100vw;
-    /* margin-top: 20px; */
 }
 
 .warping {
@@ -103,8 +94,6 @@ h1{
     text-align: center;
 }
 
-
-
 .heightSearch {
     height: 32px;
 }
@@ -127,14 +116,36 @@ embed {
     box-shadow: 5px 5px 10px;
 }
 
+/* Bottom section - adding & remove children */
 
-.add {
-    border-radius: 50%;
-    height: 75px;
-    width: 75px;
+.addingButtons{
+    display: flex;
+
+}
+
+.numberWebcams{
+    display: flex;
+    flex-wrap: wrap;
+    height:40px;
+    margin-bottom: 20px;
+    border: 0.5px solid lightgray;
+    border-radius: 5px;
+}
+
+.add, .remove {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    margin-left: 5px;
+    padding: 0;
+    height: 40px;
+    width: 40px;
     margin-bottom: 20px;
     background-color: transparent;
-    border: 0.5px solid black;
+    border: 0.5px solid lightgray;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 /* Media queries */ 
@@ -170,5 +181,9 @@ a.button:nth-child(3){
     border: 1px dashed black;
 }
 
- }
+.numberWebcams {
+    display: none;
+}
+
+}
 
